@@ -1,0 +1,5 @@
+/*!
+ * MarinDeck CSS (by taiy)
+ * Copyright 2020 taiy https://github.com/taiyme
+ * Apache License Version 2.0 https://www.apache.org/licenses/LICENSE-2.0
+ */.activity-header+.tweet>.js-show-this-thread,.activity-header+.tweet>.tweet-footer,.activity-header+.tweet>.tweet-header,.js-show-this-thread,.social-proof-container,.tweet-actions,p[class='margin-t--4 margin-b---3 txt-mute']{display:none!important}.activity-header+.tweet>.tweet-body>p.tweet-text a,time>a{pointer-events:none!important}body>.js-app-loading>div>div>div>img[alt='Loading…']{display:none!important}body>.js-app-loading>div>div>div{background:url(https://play-lh.googleusercontent.com/KCNgI24156BUJ3Lrrgf8nL7EBdGx9tOYiQCt5DGqA3JEp1UHHW0jz-8g6CpcJV3ccQ)!important;background-size:cover!important;background-position:0 0!important;background-repeat:no-repeat!important;width:160px!important;height:160px!important}body>.js-app-loading{background-color:#fcfcfc!important}body{margin:0!important}
