@@ -1,0 +1,66 @@
+/*!
+ * MarinDeck CSS (by taiy)
+ * Copyright 2020 taiy https://github.com/taiyme
+ * Apache License Version 2.0 https://www.apache.org/licenses/LICENSE-2.0
+ * Date: 2021-01-08 21:00 JST
+ */
+
+/* 圧縮サイト => https://cssminifier.com/ */
+/* 圧縮等を効率化できる方法を教えてください https://twitter.com/20041203t */
+
+/* 非表示にするUI */
+/* ツイート詳細以外のアクションボタン */
+.tweet-actions,
+/* このスレッドを表示 / Show this thread */
+.js-show-this-thread, p[class='margin-t--4 margin-b---3 txt-mute'],
+/* プロフィールのフォローされています / Followed by ... */
+.social-proof-container,
+/* 通知(Notifications)をシンプルにする */
+.activity-header + .tweet.txt-mute > .tweet-header,
+.activity-header + .tweet.txt-mute > .tweet-footer,
+.activity-header + .tweet.txt-mute > .js-show-this-thread,
+/* リプライ通知以外(いいね・RT)の返信先(Replying to) */
+.activity-header + .tweet.txt-mute > .tweet-body .other-replies {
+  display: none !important;
+}
+
+/* クリック・タップ無効 */
+/* アイコン即保存防止 */
+/* a[rel='user'].item-img,.item-img > a[rel='user'], */
+/* 時間誤タップ防止 */
+time > a,
+/* 通知(Notifications)のタグ・URL */
+.activity-header + .tweet.txt-mute > .tweet-body > p.tweet-text a {
+  pointer-events: none !important;
+}
+
+/* いいね・RT通知に表示されるツイートを2行にする(IEを除く) */
+.activity-header + .tweet.txt-mute > .tweet-body > p.tweet-text {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+/* 最初のローディング画面 */
+body > .js-app-loading > div > div > div > img[alt='Loading…'] {
+  display: none !important;
+}
+body > .js-app-loading > div > div > div {
+  /* background :url(https://ton.twimg.com/tweetdeck-web/web/assets/global/tweetdeck.a58ac4ebe4.svg) !important; */
+  background: url(https://play-lh.googleusercontent.com/KCNgI24156BUJ3Lrrgf8nL7EBdGx9tOYiQCt5DGqA3JEp1UHHW0jz-8g6CpcJV3ccQ) !important;
+  background-size: cover !important;
+  background-position: 0 0 !important;
+  background-repeat: no-repeat !important;
+  /* width: 74px !important; */
+  /* height: 74px !important; */
+  width: 160px !important;
+  height: 160px !important;
+}
+body > .js-app-loading {
+  /* background-color: #ffffff !important; */
+  background-color: #fcfcfc !important;
+}
+body {
+  margin: 0 !important;
+}
