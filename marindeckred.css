@@ -1,0 +1,87 @@
+/*!
+ * MarinDeck CSS Red (by taiy)
+ * Copyright 2020 taiy https://github.com/taiyme
+ * Apache License Version 2.0 https://www.apache.org/licenses/LICENSE-2.0
+ * Date: 2021-01-13 03:00 JST
+ */
+
+/* 標準実装された、または改善されて必要のなくなったCSS */
+
+/* アイコン即保存防止 */
+a[rel='user'].item-img,.item-img > a[rel='user'] {
+  pointer-events: none !important;
+}
+
+/* 返信を表示の余白を取り戻す */
+.stream-item.conversation-more {
+  padding: 8px 0 8px 68px !important;
+}
+
+/* 削除・ブロック系を赤くする */
+/* 1 ツイート削除 */
+.dropdown-menu :not(.is-selected) > a[data-action='destroy'],
+/* 2 ダイレクトメッセージの会話を削除(Delete conversation) */
+.dropdown-menu :not(.is-selected) > a[data-action='leave-conversation'],
+/* 3 ブロック(Block @...) */
+.dropdown-menu :not(.is-selected) > a[data-action="block"],
+/* カラムの削除(Remove) */
+button.btn-options-tray[data-action='remove'],
+/* 予約投稿(Scheduled)の削除アイコン */
+.stream-item .icon-trash {
+  color: #e0245e !important;
+}
+/* 1 */
+.dropdown-menu .is-selected > a[data-action='destroy'],
+/* 2 */
+.dropdown-menu .is-selected > a[data-action='leave-conversation'],
+/* 3 */
+.dropdown-menu .is-selected > a[data-action="block"] {
+  background: #e0245e !important;
+  color: #fff !important;
+}
+
+/* 画面幅が小さいと通知がはみ出して表示されてしまうのを防ぐ */
+.Layer.NotificationListLayer {
+  width: 100% !important;
+}
+.NotificationList {
+  max-width: calc(100% - 12px) !important;
+  right: 6px !important;
+  top: 6px !important;
+}
+.Notification-inner {
+  margin-bottom: 6px !important;
+}
+
+/* モーダルを閉じるボタン */
+.mdl-dismiss {
+  top: 6px !important;
+  right: 6px !important;
+}
+.mdl-dismiss > i {
+  color: #fff !important;
+  background-color: #38444d !important;
+  border-radius: 100% !important;
+  padding: 4px !important;
+  line-height: 16px !important;
+  font-size: 20px !important;
+  box-sizing: content-box !important;
+  opacity: 0.7 !important;
+}
+.is-touch-modal .mdl-dismiss > i {
+  line-height: 22px !important;
+  font-size: 24px !important;
+}
+.mdl-dismiss > i:hover {
+  opacity: 1 !important;
+}
+
+/* 未読数が潰れてしまうのを修正 */
+.numbered-badge {
+  box-sizing: content-box !important;
+}
+
+/* 予約投稿のカレンダーが崩れてしまうのを修正 */
+.js-scheduler .popover *:not(input):not(button) {
+  box-sizing: content-box !important;
+}
