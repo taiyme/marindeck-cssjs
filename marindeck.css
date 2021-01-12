@@ -2,7 +2,7 @@
  * MarinDeck CSS (by taiy)
  * Copyright 2020 taiy https://github.com/taiyme
  * Apache License Version 2.0 https://www.apache.org/licenses/LICENSE-2.0
- * Date: 2021-01-08 23:30 JST
+ * Date: 2021-01-13 03:00 JST
  */
 
 /* 圧縮サイト => https://cssminifier.com/ */
@@ -11,9 +11,9 @@
 /* 非表示にするUI */
 /* ツイート詳細以外のアクションボタン */
 .tweet-actions,
-/* このスレッドを表示 / Show this thread */
+/* このスレッドを表示 (Show this thread) */
 .js-show-this-thread, p[class='margin-t--4 margin-b---3 txt-mute'],
-/* プロフィールのフォローされています / Followed by ... */
+/* プロフィールのフォローされています (Followed by ...) */
 .social-proof-container,
 /* 通知(Notifications)をシンプルにする */
 .activity-header + .tweet.txt-mute > .tweet-header,
@@ -25,13 +25,45 @@
 }
 
 /* クリック・タップ無効 */
-/* アイコン即保存防止 */
-/* a[rel='user'].item-img,.item-img > a[rel='user'], */
 /* 時間誤タップ防止 */
 time > a,
 /* 通知(Notifications)のタグ・URL */
-.activity-header + .tweet.txt-mute > .tweet-body > p.tweet-text a {
+.activity-header + .tweet.txt-mute > .tweet-body > p.tweet-text a,
+/* ツイート画像のリンク */
+.med-tray > .media-preview-container > a {
   pointer-events: none !important;
+}
+
+/* ツイート画面のボタン(画像・予約投稿など)をミニマルにする */
+.compose .cf.margin-t--12.margin-b--30 {
+  float: right !important;
+  margin: 0 0 12px 6px !important;
+}
+.js-add-image-button > .label,
+.js-schedule-button > .label,
+.js-tweet-button > .label,
+.js-dm-button > .label,
+.compose button.btn.margin-b--12.padding-v--6.padding-h--12 > .label {
+  display: none !important;
+}
+.js-add-image-button > .Icon,
+.js-schedule-button > .Icon,
+.js-tweet-button > .Icon,
+.js-dm-button > .Icon,
+.compose button.btn.margin-b--12.padding-v--6.padding-h--12 > .Icon {
+  margin-left: -1px !important;
+}
+.js-add-image-button,
+.js-schedule-button,
+.js-tweet-button,
+.js-dm-button,
+.compose button.btn.margin-b--12.padding-v--6.padding-h--12 {
+  width: 42px !important;
+  float: left !important;
+  margin: 0 6px 12px 0 !important;
+}
+.js-new-composer-upsell-padding {
+  clear: both !important;
 }
 
 /* いいね・RT通知に表示されるツイートを2行にする(IEを除く) */
@@ -48,10 +80,32 @@ time {
   text-align: right !important;
 }
 
-/* 返信を表示の余白を取り戻す */
-.stream-item.conversation-more {
-  padding: 8px 0 8px 68px !important;
+/* 常に文字数カウンターを表示し、プログレスバーを非表示 */
+.js-character-count {
+  display: inline !important;
+  margin-right: 3px !important;
 }
+.js-progress-svg {
+  display: none !important;
+}
+
+/* 未読数を表示させない */
+/* .numbered-badge {
+  top: 13px !important;
+  right: -1px !important;
+  font-size: 0 !important;
+  padding: 0 !important;
+  min-width: 8px !important;
+  height: 8px !important;
+}
+.numbered-badge-onnav {
+  top: 1px !important;
+  right: -4px !important;
+} */
+/* 未読表示も表示させない */
+/* .numbered-badge {
+  display: none !important;
+} */
 
 /* 最初のローディング画面 */
 body > .js-app-loading > div > div > div > img[alt='Loading…'] {
@@ -59,7 +113,7 @@ body > .js-app-loading > div > div > div > img[alt='Loading…'] {
 }
 body > .js-app-loading > div > div > div {
   /* background :url(https://ton.twimg.com/tweetdeck-web/web/assets/global/tweetdeck.a58ac4ebe4.svg) !important; */
-  background: url(https://play-lh.googleusercontent.com/KCNgI24156BUJ3Lrrgf8nL7EBdGx9tOYiQCt5DGqA3JEp1UHHW0jz-8g6CpcJV3ccQ) !important;
+  background: url(https://play-lh.googleusercontent.com/zDN4k87aHiaO6OXpxtFiwOvfV7LDfcdYS-nysEUjivti7aeFvLTivgR6HIpql0qqOWw) !important;
   background-size: cover !important;
   background-position: 0 0 !important;
   background-repeat: no-repeat !important;
@@ -74,4 +128,75 @@ body > .js-app-loading {
 }
 body {
   margin: 0 !important;
+}
+
+/* 通知の画像・引用リツイートをシンプルに */
+/* 画像と引用リツイート、引用リツイート下の空要素を非表示 */
+.activity-header + .tweet.txt-mute > .tweet-body > .media-preview > *,
+.activity-header + .tweet.txt-mute > .tweet-body > .quoted-tweet > *,
+.activity-header + .tweet.txt-mute > .tweet-body > .quoted-tweet + .margin-b--5 {
+  display: none !important;
+}
+/* 楕円形の要素 */
+.activity-header + .tweet.txt-mute > .tweet-body > .media-preview,
+.activity-header + .tweet.txt-mute > .tweet-body > .quoted-tweet {
+  border: 1px solid #e1e8ed !important;
+  color: #8899a6 !important;
+  display: inline-block !important;
+  padding: 2px 10px 2px 6px !important;
+  border-radius: 14px !important;
+  margin: 7px 0 2px !important;
+  width: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+  font-size: .85714rem !important;
+}
+.activity-header + .tweet.txt-mute > .tweet-body > .media-preview:hover,
+.activity-header + .tweet.txt-mute > .tweet-body > .quoted-tweet:hover {
+  background-color: #f5f8fa !important;
+}
+/* アイコン表示 */
+.activity-header + .tweet.txt-mute > .tweet-body > .media-preview::before,
+.activity-header + .tweet.txt-mute > .tweet-body > .quoted-tweet::before {
+  display: inline-block !important;
+  height: 1em !important;
+  width: 1em !important;
+  vertical-align: top!important;
+  font-size: 1.07143rem!important;
+  font-family: tweetdeckregular !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+/* 画像のアイコン */
+.activity-header + .tweet.txt-mute > .tweet-body > .media-preview::before {
+  content: '\F109' !important;
+}
+/* 引用リツイートのアイコン(ネガティブマージンは位置調整) */
+.activity-header + .tweet.txt-mute > .tweet-body > .quoted-tweet::before {
+  content: '\F006' !important;
+  margin-top: -1.2px !important;
+}
+/* 文字表示 */
+/* 画像(1枚) */
+.activity-header + .tweet.txt-mute > .tweet-body > .media-preview::after {
+  display: inline !important;
+  content: 'Image' !important;
+}
+/* 画像(複数) */
+.activity-header + .tweet.txt-mute > .tweet-body > .media-preview.media-grid-container::after {
+  display: inline !important;
+  content: 'Images' !important;
+}
+/* 引用リツイート */
+.activity-header + .tweet.txt-mute > .tweet-body > .quoted-tweet::after {
+  display: inline !important;
+  content: 'Quote Tweet' !important;
+}
+
+/* 画像ツイートするときに見やすくする */
+.compose-media-compressed .compose-media-bar-thumb {
+  width: auto !important;
+  max-width: 100% !important;
 }
