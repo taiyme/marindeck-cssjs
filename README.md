@@ -6,7 +6,7 @@
 
 [Playストア][app]からダウンロードすることができます。
 
-## MarinDeck CSS/JS (by taiy)を適用する方法
+## MarinDeckでCSS/JSを適用する方法
 
 **⚠ 必ず信頼のできるコードを使用してください。**
 
