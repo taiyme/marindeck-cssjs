@@ -2,15 +2,26 @@
  * MarinDeck CSS (by taiy)
  * Copyright 2020 taiy https://github.com/taiyme
  * Apache License Version 2.0 https://www.apache.org/licenses/LICENSE-2.0
- * Date: 2021-01-13 03:00 JST
+ * Date: 2021-01-16 05:30 JST
  */
 
 /* 圧縮サイト => https://cssminifier.com/ */
 /* 圧縮等を効率化できる方法を教えてください https://twitter.com/20041203t */
 
+/*?
+ * 注意事項1: MarinDeckで使う場合、バックスペース(/の反対)は必ずエスケープしてください。
+ *        例: '\F007' => '\\F007'
+ *         2: ダブルクォートを使用する場合、必ずエスケープしてください。またはシングルクォートの使用を検討してください。
+ *        例: \"Images\" or 'Images'
+ * このコード内では、開発のしやすさを重きに置いて、エスケープ処理はしておりません。
+ * 使用される方は各自でエスケープ処理をお願いします。
+ */
+
 /* 非表示にするUI */
 /* ツイート詳細以外のアクションボタン */
 .tweet-actions,
+/* ツイート詳細以外のフッター */
+.tweet > .tweet-footer,
 /* このスレッドを表示 (Show this thread) */
 .js-show-this-thread, p[class='margin-t--4 margin-b---3 txt-mute'],
 /* プロフィールのフォローされています (Followed by ...) */
@@ -32,6 +43,14 @@ time > a,
 /* ツイート画像のリンク */
 .med-tray > .media-preview-container > a {
   pointer-events: none !important;
+}
+
+/* アイコンを四角にする */
+.avatar,
+.compose-account,
+.prf-img,
+.tweet-avatar {
+  border-radius: 10% !important;
 }
 
 /* ツイート画面のボタン(画像・予約投稿など)をミニマルにする */
@@ -107,6 +126,34 @@ time {
   display: none !important;
 } */
 
+/* ... likedのlikedのみを非表示 */
+/* .activity-header > .nbfc:not(.txt-mute) {
+  font-size: 0 !important;
+}
+.activity-header > .nbfc:not(.txt-mute) > * {
+  font-size: 1rem !important;
+} */
+
+/* 翻訳系 */
+/* 高さの最小値を35pxにしないようにする */
+/* 翻訳したあと、オリジナルの文を薄くしない */
+.tweet-translation-original-text {
+  min-height: auto !important;
+  color: inherit !important;
+}
+/* 翻訳後、戻ったときに翻訳文を非表示にする */
+.tweet > .tweet-body > .js-tweet-translation {
+  display: none !important;
+}
+/* 一部の余白を除去する */
+.tweet-detail > .js-tweet-translation.in-tweet-divider {
+  padding-top: 0 !important;
+}
+/* TRANSLATED FROM...を読みやすくする */
+.tweet-translation-attribution-text.txt-uppercase {
+  text-transform: none !important;
+}
+
 /* 最初のローディング画面 */
 body > .js-app-loading > div > div > div > img[alt='Loading…'] {
   display: none !important;
@@ -128,6 +175,76 @@ body > .js-app-loading {
 }
 body {
   margin: 0 !important;
+}
+
+/* ツイートアクションを古いものにする */
+@font-face {
+  font-family: old_tweetdeckregular;
+  src: url(https://ton.twimg.com/tweetdeck-web/web/assets/fonts/tweetdeck-regular-webfont.6ab172d369.woff) format('woff');
+  font-weight: normal;
+  font-style: normal
+}
+/* 星ふぁぼを黄色にする */
+.icon-favorite-color,
+.is-favorite .icon-favorite-toggle,
+.tweet-action.is-selected .icon-favorite,
+.tweet-action.is-selected .like-count,
+.is-selected.dm-action .icon-favorite,
+.is-selected.dm-action .like-count,
+.is-selected.tweet-detail-action .icon-favorite,
+.is-selected.tweet-detail-action .like-count,
+.tweet-action:active .icon-favorite,
+.tweet-action:active .like-count,
+.tweet-detail-action:active .icon-favorite,
+.tweet-detail-action:active .like-count,
+.dm-action:active .icon-favorite,
+.dm-action:active .like-count,
+.tweet-action:focus .icon-favorite,
+.tweet-action:focus .like-count,
+.tweet-detail-action:focus .icon-favorite,
+.tweet-detail-action:focus .like-count,
+.dm-action:focus .icon-favorite,
+.dm-action:focus .like-count,
+.tweet-action:hover .icon-favorite,
+.tweet-action:hover .like-count,
+.tweet-detail-action:hover .icon-favorite,
+.tweet-detail-action:hover .like-count,
+.dm-action:hover .icon-favorite,
+.dm-action:hover .like-count {
+  color: #fab41e !important;
+}
+/* いいねするとアイコンが消えないようにする */
+.icon-favorite-toggle.is-invisible {
+  visibility: visible !important;
+}
+/* ハートのアニメーションを非表示 */
+.heartsprite {
+  display: none !important;
+}
+[rel='favorite'].anim {
+  animation: none !important;
+}
+/* いいねアイコン */
+.icon-favorite::before,
+.icon-heart-filled::before {
+  content: '\F007' !important;
+  font-family: old_tweetdeckregular !important;
+}
+/* RTアイコン */
+.icon-retweet::before,
+.icon-retweet-filled::before {
+  content: '\F008' !important;
+  font-family: old_tweetdeckregular !important;
+}
+/* リプライアイコン */
+.icon-reply::before {
+  content: '\F006' !important;
+  font-family: old_tweetdeckregular !important;
+}
+/* メニューアイコン */
+.icon-more::before {
+  content: '\F016' !important;
+  font-family: old_tweetdeckregular !important;
 }
 
 /* 通知の画像・引用リツイートをシンプルに */
@@ -200,3 +317,37 @@ body {
   width: auto !important;
   max-width: 100% !important;
 }
+
+/* 自分がいいね・RTしたツイートを色付け */
+/* 自分のRetweetedを消す */
+/* .tweet.is-favorite > .tweet-context,
+.tweet.is-retweet > .tweet-context,
+.tweet.is-favorite.is-retweet > .tweet-context {
+  display: none !important;
+} */
+/* 色付けする要素 */
+.tweet.is-favorite::before,
+.tweet.is-retweet::before,
+.tweet.is-favorite.is-retweet::before {
+  content: ' ' !important;
+  display: block !important;
+  position: absolute !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  opacity: 0.05 !important;
+}
+/* いいねしたときの色(黄色は#fab41e) */
+.tweet.is-favorite::before {
+  background-color: #e0245e !important;
+}
+/* RTしたときの色 */
+.tweet.is-retweet::before {
+  background-color: #17bf63 !important;
+}
+/* いいねRTしたときの色 */
+/* .tweet.is-favorite.is-retweet::before {
+  background-color: #17bf63 !important;
+  opacity: 0.15 !important;
+} */
