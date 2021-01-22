@@ -3,6 +3,7 @@
  * Copyright 2020 taiy https://github.com/taiyme
  * Apache License Version 2.0 https://www.apache.org/licenses/LICENSE-2.0
  * Forked from alwaysms (by @_phocom) https://greasyfork.org/ja/scripts/405029-alwaysms
+ * Date: 2021-01-23 05:30 JST
  */
 
 // 圧縮サイト => https://javascript-minifier.com/
@@ -13,6 +14,8 @@
   const deck = () => {
     const elms = document.querySelectorAll('time');
     for (const elm of elms) {
+      // if (!elm.classList.contains('js-timestamp')) continue;
+      elm.classList.remove('js-timestamp');
       const time = elm.querySelector('a');
       const span = elm.querySelector('span');
       if (time) {
