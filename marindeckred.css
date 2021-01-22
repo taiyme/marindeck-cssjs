@@ -2,7 +2,7 @@
  * MarinDeck CSS Red (by taiy)
  * Copyright 2020 taiy https://github.com/taiyme
  * Apache License Version 2.0 https://www.apache.org/licenses/LICENSE-2.0
- * Date: 2021-01-13 03:00 JST
+ * Date: 2021-01-23 05:30 JST
  */
 
 /* 標準実装された、または改善されて必要のなくなったCSS */
@@ -84,4 +84,59 @@ button.btn-options-tray[data-action='remove'],
 /* 予約投稿のカレンダーが崩れてしまうのを修正 */
 .js-scheduler .popover *:not(input):not(button) {
   box-sizing: content-box !important;
+}
+
+/* 最初のローディング画面 */
+body > .js-app-loading > div > div > div > img[alt='Loading…'] {
+  display: none !important;
+}
+body > .js-app-loading > div > div > div {
+  /* background :url(https://ton.twimg.com/tweetdeck-web/web/assets/global/tweetdeck.a58ac4ebe4.svg) !important; */
+  background: url(https://play-lh.googleusercontent.com/zDN4k87aHiaO6OXpxtFiwOvfV7LDfcdYS-nysEUjivti7aeFvLTivgR6HIpql0qqOWw) !important;
+  background-size: cover !important;
+  background-position: 0 0 !important;
+  background-repeat: no-repeat !important;
+  /* width: 74px !important; */
+  /* height: 74px !important; */
+  width: 160px !important;
+  height: 160px !important;
+}
+body > .js-app-loading {
+  /* background-color: #ffffff !important; */
+  background-color: #fcfcfc !important;
+}
+body {
+  margin: 0 !important;
+}
+
+/* ミリ秒表示でガクガクするのを防ぐ(応急処置) */
+time {
+  min-width: 6.5em !important;
+  text-align: right !important;
+}
+
+/* 未読数を表示させない */
+.numbered-badge {
+  top: 13px !important;
+  right: -1px !important;
+  font-size: 0 !important;
+  padding: 0 !important;
+  min-width: 8px !important;
+  height: 8px !important;
+}
+.numbered-badge-onnav {
+  top: 1px !important;
+  right: -4px !important;
+}
+/* 未読表示も表示させない */
+.numbered-badge {
+  display: none !important;
+}
+
+/* ... likedのlikedのみを非表示 */
+.activity-header > .nbfc:not(.txt-mute) {
+  font-size: 0 !important;
+}
+.activity-header > .nbfc:not(.txt-mute) > * {
+  font-size: 1rem !important;
 }
