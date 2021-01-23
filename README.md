@@ -1,5 +1,9 @@
 # MarinDeck CSS/JS (by taiy)
 
+[taiy][tw]が、MarinDeck(TweetDeck)で自分なりにアレンジしている内容を記載しています。
+
+このCSS/JSは一部を除き、MarinDeckにて実装されているものではありません。
+
 ## MarinDeckとは？
 
 [MarinDeck][web]は、TweetDeckをTwitter for Androidのような操作感で使えるようにするアプリです。
@@ -37,3 +41,4 @@ Apache License Version 2.0 <https://www.apache.org/licenses/LICENSE-2.0>
 [js]: https://hisubway.online/marindeck/css/#js "カスタムCSS/JS | MarinDeck"
 [nav]: https://hisubway.online/marindeck/css/#nav "カスタムCSS/JS | MarinDeck"
 [app]: https://play.google.com/store/apps/details?id=online.hisubway.marindeck "MarinDeck for TweetDeck - Google Play のアプリ"
+[tw]: https://twitter.com/20041203t "taiyさん (@20041203t) / Twitter"
