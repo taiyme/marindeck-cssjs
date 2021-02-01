@@ -2,7 +2,7 @@
  * MarinDeck CSS (by taiy)
  * Copyright 2020 taiy https://github.com/taiyme
  * Apache License Version 2.0 https://www.apache.org/licenses/LICENSE-2.0
- * Date: 2021-01-23 05:30 JST
+ * Date: 2021-02-02 01:30 JST
  */
 
 /* 圧縮サイト => https://cssminifier.com/ */
@@ -220,12 +220,26 @@ html.dark .icon-favorite-toggle.is-invisible {
 }
 
 /* 通知の画像・引用リツイートをシンプルに(ダークモード対応) */
+/* 画像グリッドレイアウトを初期化 */
+.activity-header + .tweet.txt-mute > .tweet-body > .media-preview {
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+}
+.activity-header + .tweet.txt-mute > .tweet-body > .media-preview::before {
+  content: none !important;
+  padding-bottom: 0 !important;
+}
+.activity-header + .tweet.txt-mute > .tweet-body > .media-preview > .media-preview-container {
+  position: relative !important;
+}
 /* 画像と引用リツイート、引用リツイート下の空要素を非表示 */
 .activity-header + .tweet.txt-mute > .tweet-body > .media-preview:not(.media-grid-container) > .media-preview-container > *,
 .activity-header + .tweet.txt-mute > .tweet-body > .media-preview.media-grid-container > *,
 .activity-header + .tweet.txt-mute > .tweet-body > .quoted-tweet > *,
 .activity-header + .tweet.txt-mute > .tweet-body > .quoted-tweet + .margin-b--5 {
   display: none !important;
+  pointer-events: none !important;
 }
 /* 楕円形の要素 */
 .activity-header + .tweet.txt-mute > .tweet-body > .media-preview:not(.media-grid-container) > .media-preview-container,
@@ -319,9 +333,9 @@ html.dark .activity-header + .tweet.txt-mute > .tweet-body > .quoted-tweet:hover
   display: none !important;
 } */
 /* 色付けする要素 */
-.tweet.is-favorite::before,
-.tweet.is-retweet::before,
-.tweet.is-favorite.is-retweet::before {
+.tweet:not(.txt-mute).is-favorite::before,
+.tweet:not(.txt-mute).is-retweet::before,
+.tweet:not(.txt-mute).is-favorite.is-retweet::before {
   content: ' ' !important;
   display: block !important;
   position: absolute !important;
@@ -330,21 +344,17 @@ html.dark .activity-header + .tweet.txt-mute > .tweet-body > .quoted-tweet:hover
   bottom: 0 !important;
   left: 0 !important;
   opacity: 0.1 !important;
-}
-.tweet.is-favorite::before,
-.tweet.is-retweet::before,
-.tweet.is-favorite.is-retweet::before {
-  opacity: 0.15 !important;
+  pointer-events: none !important;
 }
 /* いいねしたときの色(黄#fab41e / 赤#e0245e) */
-.tweet.is-favorite::before {
+.tweet:not(.txt-mute).is-favorite::before {
   background-color: #fab41e !important;
 }
 /* RTしたときの色 */
-.tweet.is-retweet::before {
+.tweet:not(.txt-mute).is-retweet::before {
   background-color: #17bf63 !important;
 }
 /* いいねRTしたときの色 */
-.tweet.is-favorite.is-retweet::before {
+.tweet:not(.txt-mute).is-favorite.is-retweet::before {
   background-color: #e0245e !important;
 }
