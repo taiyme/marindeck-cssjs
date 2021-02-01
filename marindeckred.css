@@ -2,17 +2,19 @@
  * MarinDeck CSS Red (by taiy)
  * Copyright 2020 taiy https://github.com/taiyme
  * Apache License Version 2.0 https://www.apache.org/licenses/LICENSE-2.0
- * Date: 2021-01-23 05:30 JST
+ * Date: 2021-02-02 01:30 JST
  */
 
 /* 標準実装された、または改善されて必要のなくなったCSS */
 
 /* アイコン即保存防止 */
+/* https://twitter.com/20041203t/status/1346712948404748290 */
 a[rel='user'].item-img,.item-img > a[rel='user'] {
   pointer-events: none !important;
 }
 
 /* 返信を表示の余白を取り戻す */
+/* https://twitter.com/20041203t/status/1347551857946755074 */
 .stream-item.conversation-more {
   padding: 8px 0 8px 68px !important;
 }
@@ -23,7 +25,7 @@ a[rel='user'].item-img,.item-img > a[rel='user'] {
 /* 2 ダイレクトメッセージの会話を削除(Delete conversation) */
 .dropdown-menu :not(.is-selected) > a[data-action='leave-conversation'],
 /* 3 ブロック(Block @...) */
-.dropdown-menu :not(.is-selected) > a[data-action="block"],
+.dropdown-menu :not(.is-selected) > a[data-action='block'],
 /* カラムの削除(Remove) */
 button.btn-options-tray[data-action='remove'],
 /* 予約投稿(Scheduled)の削除アイコン */
@@ -35,12 +37,13 @@ button.btn-options-tray[data-action='remove'],
 /* 2 */
 .dropdown-menu .is-selected > a[data-action='leave-conversation'],
 /* 3 */
-.dropdown-menu .is-selected > a[data-action="block"] {
+.dropdown-menu .is-selected > a[data-action='block'] {
   background: #e0245e !important;
   color: #fff !important;
 }
 
 /* 画面幅が小さいと通知がはみ出して表示されてしまうのを防ぐ */
+/* https://twitter.com/20041203t/status/1347877852943851520 */
 .Layer.NotificationListLayer {
   width: 100% !important;
 }
@@ -77,16 +80,19 @@ button.btn-options-tray[data-action='remove'],
 }
 
 /* 未読数が潰れてしまうのを修正 */
+/* https://twitter.com/20041203t/status/1348575989186482176 */
 .numbered-badge {
   box-sizing: content-box !important;
 }
 
 /* 予約投稿のカレンダーが崩れてしまうのを修正 */
+/* https://twitter.com/20041203t/status/1348587354739470337 */
 .js-scheduler .popover *:not(input):not(button) {
   box-sizing: content-box !important;
 }
 
 /* 最初のローディング画面 */
+/* https://twitter.com/20041203t/status/1346772336729415680 */
 body > .js-app-loading > div > div > div > img[alt='Loading…'] {
   display: none !important;
 }
@@ -110,12 +116,14 @@ body {
 }
 
 /* ミリ秒表示でガクガクするのを防ぐ(応急処置) */
+/* https://twitter.com/20041203t/status/1347551857946755074 */
 time {
   min-width: 6.5em !important;
   text-align: right !important;
 }
 
 /* 未読数を表示させない */
+/* https://twitter.com/20041203t/status/1348589973159624711 */
 .numbered-badge {
   top: 13px !important;
   right: -1px !important;
@@ -129,6 +137,7 @@ time {
   right: -4px !important;
 }
 /* 未読表示も表示させない */
+/* https://twitter.com/20041203t/status/1348579610376589312 */
 .numbered-badge {
   display: none !important;
 }
@@ -139,4 +148,153 @@ time {
 }
 .activity-header > .nbfc:not(.txt-mute) > * {
   font-size: 1rem !important;
+}
+
+/* 文字数カウンターを右下・クリック無効 */
+/* https://twitter.com/20041203t/status/1348149360521986049 */
+.compose-text-container > .txt-right {
+  position: absolute !important;
+  right: 10px !important;
+  bottom: 10px !important;
+  margin: 0 !important;
+  pointer-events: none !important;
+}
+
+/* 画像表示をWeb Appっぽくする */
+/* https://discord.com/channels/798513678977597440/798513678977597444/805542827760943147 */
+/* radiusを14pxから16pxに変更 */
+.media-size-medium,
+.media-size-small {
+  border-radius: 16px !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+.tweet-detail-media .media-item,
+.tweet-detail-media .media-preview {
+  border-radius: 16px !important;
+}
+/* 余白を設定 */
+.media-preview {
+  margin-top: 8px !important;
+  margin-bottom: 6px !important;
+  width: 100% !important;
+  height: auto !important;
+}
+/* 本文が空なら、余白を半分にする */
+.tweet-text:empty ~ .media-preview {
+  margin-top: 4px !important;
+}
+/* 縦横比を16:9で固定 */
+.media-preview::before {
+  content: '';
+  display: block;
+  padding-bottom: 56.25%;
+}
+.media-preview > .media-preview-container,
+.media-grid-2,
+.media-grid-2-mirror,
+.media-grid-3,
+.media-grid-3-mirror,
+.media-grid-4 {
+  position: absolute !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+/* レイアウトが崩れるので、余白を0にする */
+.media-preview > .media-preview-container.margin-vm,
+html.dark .media-preview > .media-preview-container.margin-vm {
+  margin: 0 !important;
+}
+/* 幅を100%に固定・float初期化 */
+.media-grid-2-mirror > .media-image-container,
+.media-grid-2 > .media-image-container,
+.media-grid-3-mirror > .media-image-container,
+.media-grid-3 > .media-image-container,
+.media-grid-4 > .media-image-container {
+  width: 100% !important;
+  height: 100% !important;
+  float: none !important;
+}
+/* 余白を0にする */
+.media-image {
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+}
+/* 画像1枚で詳細を開いていたらすべて表示 */
+.tweet-detail-media > .media-preview:not(.media-size-large)::before {
+  content: none !important;
+}
+.tweet-detail-media > .media-preview:not(.media-size-large) > .media-preview-container {
+  position: relative !important
+}
+.tweet-detail-media > .media-preview:not(.media-size-large) > .media-preview-container .media-img {
+  width: 100% !important;
+  height: 100% !important;
+}
+/* グリッドレイアウト */
+.media-grid-2,
+.media-grid-2-mirror,
+.media-grid-3,
+.media-grid-3-mirror,
+.media-grid-4 {
+  display: grid !important;
+  grid-template: 50% 50% / 50% 50%;
+  grid-gap: 2px;
+  gap: 2px;
+}
+/* 画像2枚 */
+.media-grid-2 {
+  grid-template-areas: 'img1 img2' 'img1 img2';
+}
+.media-grid-2-mirror {
+  grid-template-areas: 'img2 img1' 'img2 img1';
+}
+/* 画像3枚 */
+.media-grid-3 {
+  grid-template-areas: 'img1 img2' 'img1 img3';
+}
+.media-grid-3-mirror {
+  grid-template-areas: 'img2 img1' 'img3 img1';
+}
+/* 画像4枚 */
+.media-grid-4 {
+  grid-template-areas: 'img1 img2' 'img3 img4';
+}
+/* 画像1枚目 */
+.media-grid-2 > .media-image-container:first-child,
+.media-grid-2-mirror > .media-image-container:first-child,
+.media-grid-3 > .media-image-container:first-child,
+.media-grid-3-mirror > .media-image-container:first-child,
+.media-grid-4 > .media-image-container:first-child {
+  grid-area: img1;
+}
+/* 画像2枚目 */
+.media-grid-2 > .media-image-container:nth-child(2),
+.media-grid-2-mirror > .media-image-container:nth-child(2),
+.media-grid-3 > .media-image-container:nth-child(2),
+.media-grid-3-mirror > .media-image-container:nth-child(2),
+.media-grid-4 > .media-image-container:nth-child(2) {
+  grid-area: img2;
+}
+/* 画像3枚目 */
+.media-grid-2 > .media-image-container:nth-child(3),
+.media-grid-3-mirror > .media-image-container:nth-child(3),
+.media-grid-3 > .media-image-container:nth-child(3),
+.media-grid-3-mirror > .media-image-container:nth-child(3),
+.media-grid-4 > .media-image-container:nth-child(3) {
+  grid-area: img3;
+}
+/* 画像4枚目 */
+.media-grid-2 > .media-image-container:nth-child(4),
+.media-grid-2-mirror > .media-image-container:nth-child(4),
+.media-grid-3 > .media-image-container:nth-child(4),
+.media-grid-3-mirror > .media-image-container:nth-child(4),
+.media-grid-4 > .media-image-container:nth-child(4) {
+  grid-area: img4;
 }
