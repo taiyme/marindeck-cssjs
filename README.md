@@ -32,9 +32,19 @@
 
 ## LICENSE
 
-MarinDeck CSS/JS (by taiy)  
+MarinDeck CSS (by taiy)  
 Copyright 2020 taiy <https://github.com/taiyme>  
 Apache License Version 2.0 <https://www.apache.org/licenses/LICENSE-2.0>
+
+MarinDeck JS (by taiy)  
+Copyright 2020 taiy <https://github.com/taiyme>  
+Apache License Version 2.0 <https://www.apache.org/licenses/LICENSE-2.0>  
+Forked from alwaysms (by @_phocom) <https://greasyfork.org/ja/scripts/405029-alwaysms>
+
+MsecDeck (by taiy)  
+Copyright 2021 taiy <https://github.com/taiyme>  
+Apache License Version 2.0 <https://www.apache.org/licenses/LICENSE-2.0>  
+Forked from MarinDeck JS (by taiy) <https://github.com/taiyme/marindeck-cssjs>
 
 [web]: https://hisubway.online/marindeck/ "MarinDeck | Android向けTweetDeckアプリ - HiSubway.online"
 [css]: https://hisubway.online/marindeck/css/#css "カスタムCSS/JS | MarinDeck"
