@@ -3,13 +3,15 @@
  * Copyright 2021 taiy https://github.com/taiyme
  * Apache License Version 2.0 https://www.apache.org/licenses/LICENSE-2.0
  * Forked from MarinDeck JS (by taiy) https://github.com/taiyme/marindeck-cssjs
- * Date: 2021-02-18 12:00 JST
+ * Date: 2021-02-23 13:30 JST
  */
+
+//? コマンドメモ: terser -c -m -f 'quote_style=1' --comments '/^!/' -o msecdeck/msecdeck.min.js -- msecdeck/msecdeck.js
 
 {
   'use strict'
-  const mdjs = () => {
-    const timestamps = document.querySelectorAll('.tweet-timestamp:not([data-md-ms=done])')
+  const msecdeck = () => {
+    const timestamps = document.querySelectorAll('.tweet-timestamp:not([data-msecdeck=done])')
     if (timestamps.length) {
       for (const timestamp of timestamps) {
         timestamp.classList.remove('js-timestamp')
@@ -31,7 +33,7 @@
         }
       }
     }
-    const details = document.querySelectorAll('.tweet-detail>div.txt-mute:last-of-type>a:first-child:not([data-md-ms=done])')
+    const details = document.querySelectorAll('.tweet-detail>.js-card-container+div.txt-mute>a:first-child:not([data-msecdeck=done])')
     if (details.length) {
       for (const detail of details) {
         detail.dataset.msecdeck = 'done'
@@ -66,20 +68,21 @@
     if (isFull) {
       return full
     }
-    if (nowunix - dateunix >= (3600000 * 2)) {
+    if ((nowunix - dateunix) >= (3600000 * 2)) {
       return days
     }
     return msec
   }
   const body = document.body
   const observer = new MutationObserver(() => {
-    mdjs()
+    msecdeck()
   })
-  observer.observe(body, {
+  const config = {
     childList: true,
     attributes: false,
     characterData: false,
     subtree: true
-  })
-  mdjs()
+  }
+  observer.observe(body, config)
+  msecdeck()
 }
