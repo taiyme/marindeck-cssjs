@@ -3,7 +3,7 @@
  * Copyright 2021 taiy https://github.com/taiyme
  * Apache License Version 2.0 https://www.apache.org/licenses/LICENSE-2.0
  * Forked from MarinDeck JS (by taiy) https://github.com/taiyme/marindeck-cssjs
- * Date: 2021-02-23 13:30 JST
+ * Date: 2021-03-11 08:30 JST
  */
 
 //? コマンドメモ: terser -c -m -f 'quote_style=1' --comments '/^!/' -o msecdeck/msecdeck.min.js -- msecdeck/msecdeck.js
@@ -39,7 +39,7 @@
         detail.dataset.msecdeck = 'done'
         const id = Number(detail.href.split('/')[5])
         const isOldId = id < 100000000000000
-        const ts = format(isOldId ? new Date(detail.textContent.replace(/(am|pm)\s·/,'')) : snowflake(id), true)
+        const ts = format(isOldId ? new Date(detail.textContent.replace(/(am|pm)\s·/, ' $1')) : snowflake(id), true)
         detail.textContent = ts
       }
     }
